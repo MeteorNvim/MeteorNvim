@@ -1,0 +1,8 @@
+{
+  "theme": "catppuccin-mocha",
+  "leader": " ",
+  "maps": {
+    "tree": ["ni", "<C-B>", "<CMD>:NvimTreeToggle<CR>", "true"],
+    "themes": ["n", "<leader>t", "<CMD>:Telescope theme_switcher<CR>", "true"]
+  }
+}
