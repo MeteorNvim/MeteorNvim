@@ -1,4 +1,5 @@
 return {
+    -- Autocomplete
     {
         "hrsh7th/nvim-cmp",
         dependencies = {
@@ -15,6 +16,15 @@ return {
             require('plugins.config.cmp')
         end
     },
+    -- Snippets
+    {
+        "L3MON4D3/LuaSnip",
+        dependencies = {
+            "saadparwaiz1/cmp_luasnip",
+            "rafamadriz/friendly-snippets"
+        }
+    },
+    -- Syntax hightlight
     {
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",

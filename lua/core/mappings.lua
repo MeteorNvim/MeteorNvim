@@ -14,7 +14,7 @@ end
 local M = {}
 
 -- Define a function to split a string into individual letters
-function M.convertToLetters(inputString)
+function M.splitString(inputString)
     local result = {}
     for i = 1, #inputString do
         local letter = inputString:sub(i, i)
@@ -35,11 +35,11 @@ M.map = function(mode, lhs, rhs, opts)
 end
 
 -- Iterate over an array of key mapping tables obtained from JSON
-for _, maptable in ipairs(json.parseTable("maps")) do
+for _, maps in ipairs(json.parseTable("maps")) do
     -- Extract the modes for the key mapping and split them into individual letters
-    local modes = M.convertToLetters(maptable[1])
+    local modes = M.splitString(maps[1])
     for _, mode in ipairs(modes) do
         -- For each mode, set the key mapping with specified options
-        M.map(mode, maptable[2], maptable[3], { silent = json.strtobool[maptable[4]] })
+        M.map(mode, maps[2], maps[3], { silent = json.strtobool[maps[4]] })
     end
 end

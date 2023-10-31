@@ -1,6 +1,6 @@
 local cmp = require('cmp')
 
--- icons
+-- Define icons for different code item kinds
 local kind_icons = {
     Text = '  ',
     Method = '  ',
@@ -136,3 +136,6 @@ cmp.setup.cmdline(':', {
         { name = 'cmdline' }
     })
 })
+
+-- Load vscode snippets
+require("luasnip.loaders.from_vscode").lazy_load()
