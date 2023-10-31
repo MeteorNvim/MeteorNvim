@@ -32,4 +32,14 @@ return {
             require("plugins.config.treesitter")
         end
     },
+    -- Nvim Comment
+    {
+        "terrortylor/nvim-comment",
+        dependencies = {
+          "JoosepAlviste/nvim-ts-context-commentstring"
+        },
+        config = function ()
+          require('plugins.config.nvim-comment')
+        end
+      }
 }
