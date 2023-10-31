@@ -89,11 +89,19 @@ return {
     },
 
     -- Fidget
-  {
-    "j-hui/fidget.nvim",
-    tag = "legacy",
-    config = function ()
-      require("fidget").setup()
-    end
-  },
+    {
+        "j-hui/fidget.nvim",
+        tag = "legacy",
+        config = function()
+            require("fidget").setup()
+        end
+    },
+    
+    -- Color picker
+    {
+        "uga-rosa/ccc.nvim",
+        config = function()
+            require("plugins.ccc")
+        end
+    },
 }
