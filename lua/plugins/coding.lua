@@ -36,10 +36,43 @@ return {
     {
         "terrortylor/nvim-comment",
         dependencies = {
-          "JoosepAlviste/nvim-ts-context-commentstring"
+            "JoosepAlviste/nvim-ts-context-commentstring"
         },
-        config = function ()
-          require('plugins.config.nvim-comment')
+        config = function()
+            require('plugins.config.nvim-comment')
         end
-      }
+    },
+    -- Trim on save
+    {
+        "cappyzawa/trim.nvim",
+        config = function()
+            require('trim').setup({
+                patterns = {
+                    [[%s/\s\+$//e]],
+                    [[%s/\($\n\s*\)\+\%$//]],
+                    [[%s/\%^\n\+//]],
+                },
+            })
+        end
+    },
+
+    -- Autopairs
+    {
+        "windwp/nvim-autopairs",
+        dependencies = {
+            "tpope/vim-surround"
+        },
+        config = function()
+            require('nvim-autopairs').setup()
+        end
+    },
+
+    -- Identline
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        version = "2.20.7",
+        config = function()
+            require('plugins.config.identline')
+        end
+    },
 }
