@@ -16,6 +16,7 @@ return {
             require('plugins.config.cmp')
         end
     },
+
     -- Snippets
     {
         "L3MON4D3/LuaSnip",
@@ -24,6 +25,7 @@ return {
             "rafamadriz/friendly-snippets"
         }
     },
+
     -- Syntax hightlight
     {
         "nvim-treesitter/nvim-treesitter",
@@ -32,6 +34,7 @@ return {
             require("plugins.config.treesitter")
         end
     },
+
     -- Nvim Comment
     {
         "terrortylor/nvim-comment",
@@ -42,6 +45,7 @@ return {
             require('plugins.config.nvim-comment')
         end
     },
+
     -- Trim on save
     {
         "cappyzawa/trim.nvim",
@@ -73,6 +77,14 @@ return {
         version = "2.20.7",
         config = function()
             require('plugins.config.identline')
+        end
+    },
+
+    -- ToDo
+    {
+        "folke/todo-comments.nvim",
+        config = function()
+            require('plugins.config.todo')
         end
     },
 }
