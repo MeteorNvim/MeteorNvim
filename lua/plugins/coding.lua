@@ -96,12 +96,12 @@ return {
             require("fidget").setup()
         end
     },
-    
+
     -- Color picker
     {
         "uga-rosa/ccc.nvim",
         config = function()
-            require("plugins.ccc")
+            require("plugins.config.color-picker")
         end
     },
 }
