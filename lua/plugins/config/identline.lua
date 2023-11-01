@@ -13,6 +13,7 @@ require("indent_blankline").setup {
         "lspinfo",
         "toggleterm",
         "NvimTree",
+        "mason"
     },
     buftype_exclude = { "terminal", "lazy" },
     show_trailing_blankline_indent = false,
