@@ -85,6 +85,35 @@ function M.parseTable(object)
     return result
 end
 
+--- Parse a string containing Lua tables and convert it into a Lua table.
+---
+--- @param str string: The input string to parse.
+--- @return table: The parsed Lua table.
+function M.parseTableWithoutEscapeChars(object)
+    local cmd = string.format([[jq -r '.%s | values[] | map(gsub("[\\n\\t\\\"]"; ""))' %s]], object, path)
+    local handle = io.popen(cmd)
+    local result = {}
+
+    if handle then
+        local jsonString = handle:read('*a')
+        for line in jsonString:gmatch("%b[]") do
+            -- Eliminate brackets [ ] and split the string into elements
+            local elements = line:sub(2, -2):gsub("[\n\r]+", ""):gsub("%s+", " "):match("%s*(.-)%s*$")
+    
+            -- Split the elements by commas
+            local tableElements = {}
+            for element in elements:gmatch("%s*([^,]+)%s*") do
+                tableElements[#tableElements + 1] = element:match('^"(.*)"$')
+            end
+    
+            table.insert(result, tableElements)
+        end
+    end
+    
+
+    return result
+end
+
 -- Convert json string to boolean
 M.strtobool={ ["true"]=true, ["false"]=false }
 

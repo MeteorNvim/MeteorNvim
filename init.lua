@@ -1,7 +1,6 @@
-require("core.mappings")
 require("core.options")
-require("core.lazy")
 require("userconfig")
+require("core.lazy")
 
 local json = require("core.utils.json")
 local theme = json.getValue("theme")
