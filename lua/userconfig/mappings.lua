@@ -1,17 +1,8 @@
--- Import the JSON library
-local json = require("core.utils.json")
-
--- Check if the "leader" value in JSON is empty
-if json.getValue("leader") == "" then
-    -- Set the Vim global mapleader to a space character if "leader" is empty
-    vim.g.mapleader = " "
-else
-    -- Set the Vim global mapleader to the value stored in JSON "leader" field
-    vim.g.mapleader = json.getValue("leader")
-end
-
 -- Create a table for storing functions and mappings
 local M = {}
+
+-- Set leader key
+vim.g.mapleader = " "
 
 -- Define a function to set key mappings
 M.map = function(mode, lhs, rhs, opts)

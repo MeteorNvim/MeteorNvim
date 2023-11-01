@@ -11,4 +11,5 @@ else
     vim.cmd(string.format("colorscheme %s", theme))
 end
 
+
 vim.cmd("autocmd BufRead,BufNewFile,BufEnter * set formatoptions-=cro | stopinsert")
