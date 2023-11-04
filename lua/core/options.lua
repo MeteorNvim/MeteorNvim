@@ -61,6 +61,9 @@ vim.opt.splitbelow = true
 -- Set popup menu height
 vim.opt.pumheight = 15
 
+-- Set cmdline height
+-- vim.opt.cmdheight = 0
+
 -- Configure completion options
 vim.opt.completeopt = {"menuone", "noinsert", "noselect"}
 

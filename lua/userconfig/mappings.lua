@@ -37,9 +37,17 @@ M.map('n', '<Leader>c', ":lua require('telescope').extensions.code_actions.code_
 M.map("n", "<C-B>", "<CMD>:NvimTreeToggle<CR>")
 M.map("i", "<C-B>", "<CMD>:NvimTreeToggle<CR>")
 
+-- Terminal
+M.map('n', "<C-t>", "<CMD>:terminal<CR>", { silent = true })
+M.map('i', "<C-t>", "<CMD>:terminal<CR>", { silent = true })
+
 -- Ctrl+Delete
 M.map("i", "<C-BS>", "<C-w>")
 M.map("i", "<C-h>", "<C-w>")
+
+-- Splits
+M.map("n", "<leader>sv", ":vsp<CR>", { noremap = true })
+M.map("n", "<leader>sh", ":sp<CR>", { noremap = true })
 
 -- Clipboard Copy
 M.map("v", "<C-C>", "y:lua ClipboardYank()<cr>gv", {silent = true} )
@@ -125,3 +133,5 @@ M.map("i", "<C-Up>", "<Esc>:m .-2<CR>==gi")
 
 M.map("v", "<C-Down>", ":m '>+1<CR>gv=gv")
 M.map("v", "<C-Up>", ":m '<-2<CR>gv=gv")
+
+return M
