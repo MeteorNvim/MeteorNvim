@@ -48,6 +48,11 @@ M.map('i', "<C-t>", "<CMD>:terminal<CR>", { silent = true })
 M.map("i", "<C-BS>", "<C-w>")
 M.map("i", "<C-h>", "<C-w>")
 
+-- Contextual Menu
+M.map("n", "<RightMouse>", "<cmd>:popup Meteor<CR>")
+M.map("i", "<RightMouse>", "<cmd>:popup Meteor<CR>")
+M.map("v", "<RightMouse>", "<cmd>:popup VMeteor<CR>")
+
 -- Splits
 M.map("n", "<leader>sv", ":vsp<CR>", { noremap = true })
 M.map("n", "<leader>sh", ":sp<CR>", { noremap = true })
