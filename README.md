@@ -1,8 +1,9 @@
 <div align="center">
-  <img src="https://github.com/MeteorNvim/MeteorNvim/assets/59105868/fa97b8bf-150c-4a17-b890-31bd7b544ddc" width="250px"/>
+  <img src="https://github.com/MeteorNvim/MeteorNvim/assets/59105868/952e2b9a-40cf-45f0-ae71-d58bf5b3a9d3" width="250px"/>
 </div>
 
 <h1 align="center">Preview</h1>
+
 
 ### Overview
 ![imagen](https://github.com/MeteorNvim/MeteorNvim/assets/59105868/41f7812c-2fc0-40ea-8831-2e9386610497)
