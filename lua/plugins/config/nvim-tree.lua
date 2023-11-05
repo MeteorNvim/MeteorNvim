@@ -36,7 +36,8 @@ require'nvim-tree'.setup( {
       side = 'left',
       number = false,
       relativenumber = false,
-      signcolumn = "yes"
+      signcolumn = "yes",
+      preserve_window_proportions = true,
     },
     renderer = {
       highlight_git = true,
