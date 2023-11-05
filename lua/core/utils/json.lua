@@ -7,7 +7,7 @@ local config_path = vim.fn.stdpath('config')
 local path = string.format("%s/settings.json", config_path)
 
 --- Function to get the content of a file.
---- @param filepath The path to the file.
+--- @param filepath string path to the file.
 local getFileContent = function(filepath)
     local file = io.open(filepath, "r")
     if not file then
@@ -20,8 +20,8 @@ local getFileContent = function(filepath)
 end
 
 --- Function to write content to a file.
---- @param filepath The path to the file.
---- @param content The content to write to the file.
+--- @param filepath string path to the file.
+--- @param content string content to write to the file.
 local writeFileContent = function(filepath, content)
     local file, err = io.open(filepath, "w")
 
@@ -40,21 +40,21 @@ local getTable = function()
 end
 
 --- Function to encode a Lua table as JSON.
---- @param json The Lua table to encode as JSON.
+--- @param json table Lua table to encode as JSON.
 local setTable = function(json)
     return vim.json.encode(json)
 end
 
 --- Function to get a value from the JSON configuration.
---- @param object The key to retrieve from the JSON configuration.
+--- @param object string key to retrieve from the JSON configuration.
 M.getValue = function(object)
     local data = getTable()
     return data[object]
 end
 
 --- Function to set a value in the JSON configuration.
---- @param object The key to set in the JSON configuration.
---- @param value The value to assign to the key.
+--- @param object string key to set in the JSON configuration.
+--- @param value string value to assign to the key.
 M.setValue = function(object, value)
     local data = getTable()
     data[object] = value
