@@ -29,6 +29,13 @@ require('dashboard').setup {
           action = 'Telescope oldfiles'
         },
         {
+          icon = '  ',
+          icon_hl = 'Projects',
+          desc = 'Projects',
+          desc_hl = 'String',
+          action = 'Telescope projects'
+        },
+        {
           icon = '  ',
           icon_hl = 'Find',
           desc = 'Find File',

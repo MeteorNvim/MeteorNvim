@@ -17,5 +17,12 @@ return {
         config = function()
             require('telescope').load_extension('theme_switcher')
         end
+    },
+    {
+        "ahmedkhalf/project.nvim",
+        config = function()
+            require("project_nvim").setup()
+            require('telescope').load_extension('projects')
+        end
     }
 }
