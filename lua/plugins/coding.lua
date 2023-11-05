@@ -104,4 +104,9 @@ return {
             require("plugins.config.color-picker")
         end
     },
+
+    -- Neoformat
+    {
+        "sbdchd/neoformat"
+    },
 }
