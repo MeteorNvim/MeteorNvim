@@ -109,4 +109,13 @@ return {
     {
         "sbdchd/neoformat"
     },
+
+    -- Renamer
+    {
+      "filipdutescu/renamer.nvim",
+      config = function ()
+        require('renamer').setup()
+      end
+    },
+
 }
