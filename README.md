@@ -19,3 +19,26 @@
 ![imagen](https://github.com/MeteorNvim/MeteorNvim/assets/59105868/143c4ed2-02a6-4a7f-9e79-9c75abd66de8)
 ### Contextual Menu
 ![imagen](https://github.com/MeteorNvim/MeteorNvim/assets/59105868/1e7b52bd-cb60-41c6-8768-1733ea87c4c0)
+## Javascript/Typescript inlay hints
+![imagen](https://github.com/MeteorNvim/MeteorNvim/assets/59105868/9aab6816-6d3b-4307-87c4-c9cce5d60704)
+`:LspSettings tsserver`
+```json
+{
+  "javascript.inlayHints.includeInlayEnumMemberValueHints": true,
+  "javascript.inlayHints.includeInlayFunctionLikeReturnTypeHints": true,
+  "javascript.inlayHints.includeInlayFunctionParameterTypeHints": true,
+  "javascript.inlayHints.includeInlayParameterNameHints": "all",
+  "javascript.inlayHints.includeInlayParameterNameHintsWhenArgumentMatchesName": true,
+  "javascript.inlayHints.includeInlayPropertyDeclarationTypeHints": true,
+  "javascript.inlayHints.includeInlayVariableTypeHints": true,
+
+  "typescript.inlayHints.includeInlayEnumMemberValueHints": true,
+  "typescript.inlayHints.includeInlayFunctionLikeReturnTypeHints": true,
+  "typescript.inlayHints.includeInlayFunctionParameterTypeHints": true,
+  "typescript.inlayHints.includeInlayParameterNameHints": "all",
+  "typescript.inlayHints.includeInlayParameterNameHintsWhenArgumentMatchesName": true,
+  "typescript.inlayHints.includeInlayPropertyDeclarationTypeHints": true,
+  "typescript.inlayHints.includeInlayVariableTypeHints": true
+}
+
+```
