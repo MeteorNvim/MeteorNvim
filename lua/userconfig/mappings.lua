@@ -33,6 +33,9 @@ M.map('n', '<Leader>l', ':noh<CR>', { noremap = true, silent = true })
 -- Neoformat
 M.map('n', '<Leader>f', ':Neoformat<CR>', { noremap = true, silent = true })
 
+-- Renamer
+M.map('n', '<Leader>r', ":lua require('renamer').rename()<CR>", { noremap = true, silent = true })
+
 -- Code actions
 M.map('n', '<Leader>c', ":lua require('telescope').extensions.code_actions.code_actions()<CR>", { noremap = true, silent = true })
 
