@@ -1,6 +1,7 @@
 require("core.options")
 require("userconfig")
 require("core.lazy")
+require("userconfig.lsp")
 
 local json = require("core.utils.json")
 local theme = json.getValue("theme")
