@@ -130,11 +130,6 @@ M.map("n", "<C-7>", ":CommentToggle<CR>")
 M.map("i", "<C-7>", "<c-o>:CommentToggle<CR>")
 M.map("v", "<C-7>", ":'<,'>CommentToggle<CR>")
 
--- Search
-M.map("n", "<C-f>", [[:SearchBoxMatchAll title="Search"<cr>]])
-M.map("i", "<C-f>", [[<ESC>:SearchBoxMatchAll title="Search"<cr>]])
-M.map("x", "<C-f>", [[:SearchBoxMatchAll title="Search" visual_mode=true <cr>]])
-
 -- Move lines
 M.map("n", "<C-Down>", ":m .+1<CR>==")
 M.map("n", "<C-Up>", ":m .-2<CR>==")
