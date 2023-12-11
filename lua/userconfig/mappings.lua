@@ -31,7 +31,7 @@ M.map('n', '<Leader>s', ':lua vim.lsp.buf.signature_help()<CR>', { noremap = tru
 M.map('n', '<Leader>l', ':noh<CR>', { noremap = true, silent = true })
 
 -- Neoformat
-M.map('n', '<Leader>f', ':Neoformat<CR>', { noremap = true, silent = true })
+M.map('n', '<Leader>f', ':lua vim.lsp.buf.format()<CR>', { noremap = true, silent = true })
 
 -- Renamer
 M.map('n', '<Leader>r', ":lua require('renamer').rename()<CR>", { noremap = true, silent = true })
