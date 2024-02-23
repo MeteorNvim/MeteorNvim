@@ -129,4 +129,15 @@ return {
       end
     },
 
+    -- Git
+    {
+      "tpope/vim-fugitive"
+    },
+    {
+      "tpope/vim-repeat"
+    },
+    {
+      "mhinz/vim-signify"
+    },
+
 }
