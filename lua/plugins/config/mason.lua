@@ -57,8 +57,19 @@ mason_lspconfig.setup()
 -- Set up handlers for LSP servers and attach the 'on_attach' function
 mason_lspconfig.setup_handlers({
     function(server_name)
+      if server_name == "volar" then
         lspconfig[server_name].setup({
-            on_attach = on_attach
+            on_attach = on_attach,
+            init_options = {
+            vue = {
+              hybridMode = false,
+            },
+          },
         })
+      else
+        lspconfig[server_name].setup({
+            on_attach = on_attach,
+        })
+      end
     end
 })
