@@ -35,8 +35,9 @@ git clone https://github.com/MeteorNvim/MeteorNvim.git /tmp/MeteorNvim
 # Moving files to NVIM_CONFIG_PATH
 echo "Moving files to $NVIM_CONFIG_PATH..."
 mkdir -p "$NVIM_CONFIG_PATH"
-mv /tmp/MeteorNvim/lua/core "$NVIM_CONFIG_PATH"/lua
-mv /tmp/MeteorNvim/lua/plugins "$NVIM_CONFIG_PATH"/lua
+cp /tmp/MeteorNvim/init.lua "$NVIM_CONFIG_PATH"
+cp -r /tmp/MeteorNvim/lua/core "$NVIM_CONFIG_PATH"/lua
+cp -r /tmp/MeteorNvim/lua/plugins "$NVIM_CONFIG_PATH"/lua
 
 # Cleanup - removing the cloned repository
 echo "Cleaning up..."
