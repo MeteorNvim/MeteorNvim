@@ -35,6 +35,14 @@ return {
         end
     },
 
+    -- Closetag
+    {
+        "windwp/nvim-ts-autotag",
+        config = function ()
+          require('nvim-ts-autotag').setup()
+        end
+    },
+
     -- Nvim Comment
     {
         "terrortylor/nvim-comment",
