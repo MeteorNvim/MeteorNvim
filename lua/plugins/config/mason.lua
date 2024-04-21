@@ -26,14 +26,16 @@ function on_attach(client, bufnr)
 
         -- Initial inlay hint display.
         local mode = vim.api.nvim_get_mode().mode
-        vim.lsp.inlay_hint.enable(bufnr, mode == 'n' or mode == 'v')
+        vim.lsp.inlay_hint.enable(mode == 'n' or mode == 'v', {bufnr = bufnr})
 
         -- Display inlay hints when entering insert mode
         vim.api.nvim_create_autocmd('InsertEnter', {
             group = inlay_hints_group,
             buffer = bufnr,
             callback = function()
-                vim.lsp.inlay_hint.enable(bufnr, true)
+              vim.lsp.inlay_hint.enable(true, {
+                bufnr = buf
+              })
             end,
         })
     end
