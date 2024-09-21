@@ -97,5 +97,3 @@ require('bufferline').setup {
         always_show_bufferline = true,
     },
 }
-
-vim.diagnostic.config { update_in_insert = true }
