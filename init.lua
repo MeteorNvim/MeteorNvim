@@ -15,3 +15,4 @@ end
 
 vim.cmd("autocmd BufRead,BufNewFile,BufEnter * set formatoptions-=cro | stopinsert")
 vim.cmd("autocmd TermOpen * setlocal nonumber norelativenumber")
+vim.diagnostic.config { update_in_insert = true }
