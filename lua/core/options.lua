@@ -78,5 +78,3 @@ vim.opt.foldlevelstart = 99
 
 -- Remove fill chars
 vim.opt.fillchars = {eob = " "}
-
-vim.diagnostic.config { update_in_insert = true }
