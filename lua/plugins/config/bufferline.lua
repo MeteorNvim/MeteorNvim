@@ -68,7 +68,6 @@ require('bufferline').setup {
         max_prefix_length = 15,
         tab_size = 18,
         diagnostics = "nvim_lsp",
-        diagnostics_update_in_insert = true,
         diagnostics_indicator = function(count, level, diagnostics_dict, context)
             local s = " "
             for e, n in pairs(diagnostics_dict) do
@@ -98,3 +97,5 @@ require('bufferline').setup {
         always_show_bufferline = true,
     },
 }
+
+vim.diagnostic.config { update_in_insert = true }
