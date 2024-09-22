@@ -70,7 +70,7 @@ mason_lspconfig.setup_handlers({
           },
         })
       -- Vue files imported from ts fixed
-      elseif server_name == "tsserver" then
+      elseif server_name == "ts_ls" then
         lspconfig[server_name].setup({
           on_attach = on_attach,
           init_options = {
