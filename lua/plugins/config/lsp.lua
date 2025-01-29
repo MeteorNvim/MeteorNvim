@@ -44,5 +44,12 @@ local diagnostic_signs = {
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
   end
 
-vim.diagnostic.config(lsputils.diagnostic)
+local vim_version = vim.version().minor
+
+if vim_version >= 11 then
+  vim.diagnostic.config({virtual_lines=true})
+else
+  vim.diagnostic.config(lsputils.diagnostic)
+end
+
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, lsputils.float)
