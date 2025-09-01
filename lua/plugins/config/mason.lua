@@ -57,36 +57,36 @@ mason.setup()
 mason_lspconfig.setup()
 
 -- Set up handlers for LSP servers and attach the 'on_attach' function
-mason_lspconfig.setup_handlers({
-    function(server_name)
-      -- Vue scripts fixed
-      if server_name == "volar" then
-        lspconfig[server_name].setup({
-            on_attach = on_attach,
-            init_options = {
-            vue = {
-              hybridMode = false,
-            },
-          },
-        })
-      -- Vue files imported from ts fixed
-      elseif server_name == "ts_ls" then
-        lspconfig[server_name].setup({
-          on_attach = on_attach,
-          init_options = {
-            plugins = {
-              {
-                name = "@vue/typescript-plugin",
-                location = "./node_modules/@vue/typescript-plugin",
-                languages = {"javascript", "typescript", "vue"},
-              },
-            },
-          },
-        })
-      else
-        lspconfig[server_name].setup({
-            on_attach = on_attach,
-        })
-      end
-    end
-})
+-- mason_lspconfig.setup_handlers({
+--     function(server_name)
+--       -- Vue scripts fixed
+--       if server_name == "volar" then
+--         lspconfig[server_name].setup({
+--             on_attach = on_attach,
+--             init_options = {
+--             vue = {
+--               hybridMode = false,
+--             },
+--           },
+--         })
+--       -- Vue files imported from ts fixed
+--       elseif server_name == "ts_ls" then
+--         lspconfig[server_name].setup({
+--           on_attach = on_attach,
+--           init_options = {
+--             plugins = {
+--               {
+--                 name = "@vue/typescript-plugin",
+--                 location = "./node_modules/@vue/typescript-plugin",
+--                 languages = {"javascript", "typescript", "vue"},
+--               },
+--             },
+--           },
+--         })
+--       else
+--         lspconfig[server_name].setup({
+--             on_attach = on_attach,
+--         })
+--       end
+--     end
+-- })
