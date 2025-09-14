@@ -54,39 +54,36 @@ lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_c
 mason.setup()
 
 -- Set up the 'mason-lspconfig' plugin
-mason_lspconfig.setup()
+mason_lspconfig.setup({
+    automatic_enable = false,
+})
 
--- Set up handlers for LSP servers and attach the 'on_attach' function
--- mason_lspconfig.setup_handlers({
---     function(server_name)
---       -- Vue scripts fixed
---       if server_name == "volar" then
---         lspconfig[server_name].setup({
---             on_attach = on_attach,
---             init_options = {
---             vue = {
---               hybridMode = false,
---             },
---           },
---         })
---       -- Vue files imported from ts fixed
---       elseif server_name == "ts_ls" then
---         lspconfig[server_name].setup({
---           on_attach = on_attach,
---           init_options = {
---             plugins = {
---               {
---                 name = "@vue/typescript-plugin",
---                 location = "./node_modules/@vue/typescript-plugin",
---                 languages = {"javascript", "typescript", "vue"},
---               },
---             },
---           },
---         })
---       else
---         lspconfig[server_name].setup({
---             on_attach = on_attach,
---         })
---       end
---     end
--- })
+for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
+    if server == "volar" then
+      lspconfig[server].setup({
+        on_attach = on_attach,
+        init_options = {
+          vue = {
+            hybridMode = false,
+          },
+        },
+      })
+    elseif server == "ts_ls" then
+      lspconfig[server].setup({
+        on_attach = on_attach,
+        init_options = {
+          plugins = {
+            {
+              name = "@vue/typescript-plugin",
+              location = "./node_modules/@vue/typescript-plugin",
+              languages = { "javascript", "typescript", "vue" },
+            },
+          },
+        },
+      })
+    else
+      lspconfig[server].setup({
+        on_attach = on_attach,
+      })
+    end
+  end
