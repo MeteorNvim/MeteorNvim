@@ -31,9 +31,13 @@ local on_attach = function(client, buf)
 end
 
 -- Here add your lsp
+-- Example (NEW API for Neovim 0.11+):
 
--- Example:
--- require('lspconfig')['rust_analyzer'].setup {
+-- Define the configuration:
+-- vim.lsp.config('rust_analyzer', {
 --   capabilities = capabilities,
---   on_attach = on_attach
--- }
+--   on_attach = on_attach,
+-- })
+--
+-- -- Enable the server:
+-- vim.lsp.enable('rust_analyzer')
