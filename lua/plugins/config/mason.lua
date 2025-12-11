@@ -1,89 +1,98 @@
--- Import the 'mason' and 'mason-lspconfig' Lua modules
 local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
-
--- Import necessary Neovim Lua modules
-local lspconfig = require("lspconfig")
 local nlspsettings = require("nlspsettings")
 
--- Configure the 'nlspsettings' plugin
+-- nlspsettings
 nlspsettings.setup({
     config_home = vim.fn.stdpath('config') .. '/nlsp-settings',
     local_settings_dir = ".nlsp-settings",
-    local_settings_root_markers_fallback = { '.git' },
+    local_settings_root_markers_fallback = { ".git" },
     append_default_schemas = true,
-    loader = 'json'
+    loader = "json",
 })
 
--- Define an 'on_attach' function for LSP clients
-function on_attach(client, bufnr)
-    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+-- on_attach
+local function on_attach(client, bufnr)
+    vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-    -- Check if the LSP server supports inlay hints and configure their display
     if client.server_capabilities.inlayHintProvider then
-        local inlay_hints_group = vim.api.nvim_create_augroup('InlayHints', { clear = true })
+        local group = vim.api.nvim_create_augroup("InlayHints", { clear = true })
 
-        -- Initial inlay hint display.
         local mode = vim.api.nvim_get_mode().mode
-        vim.lsp.inlay_hint.enable(mode == 'n' or mode == 'v', {bufnr = bufnr})
+        vim.lsp.inlay_hint.enable(mode == "n" or mode == "v", { bufnr = bufnr })
 
-        -- Display inlay hints when entering insert mode
-        vim.api.nvim_create_autocmd('InsertEnter', {
-            group = inlay_hints_group,
+        vim.api.nvim_create_autocmd("InsertEnter", {
+            group = group,
             buffer = bufnr,
             callback = function()
-              vim.lsp.inlay_hint.enable(true, {
-                bufnr = buf
-              })
+                vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
             end,
         })
     end
 end
 
--- Define global capabilities for LSP clients
-local global_capabilities = vim.lsp.protocol.make_client_capabilities()
-global_capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- Capabilities
+local caps = vim.lsp.protocol.make_client_capabilities()
+caps.textDocument.completion.completionItem.snippetSupport = true
 
--- Override the default LSP configuration to set the global capabilities
-lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
-    capabilities = global_capabilities,
+-- Default config for all servers
+vim.lsp.config("*", {
+    capabilities = caps,
+    on_attach = on_attach,
 })
 
--- Set up the 'mason' plugin
+-- Mason
 mason.setup()
+mason_lspconfig.setup({ automatic_installation = false })
 
--- Set up the 'mason-lspconfig' plugin
-mason_lspconfig.setup({
-    automatic_enable = false,
-})
-
+-- Setup per-server configs
 for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
-    if server == "volar" then
-      lspconfig[server].setup({
-        on_attach = on_attach,
-        init_options = {
-          vue = {
-            hybridMode = false,
-          },
-        },
-      })
-    elseif server == "ts_ls" then
-      lspconfig[server].setup({
-        on_attach = on_attach,
-        init_options = {
-          plugins = {
-            {
-              name = "@vue/typescript-plugin",
-              location = "./node_modules/@vue/typescript-plugin",
-              languages = { "javascript", "typescript", "vue" },
+    local cfg = {}
+
+    -- === Modern Vue + TypeScript Integration ===
+    if server == "vtsls" then
+        local vue_language_server_path =
+            vim.fn.stdpath("data") .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+
+        local vue_plugin = {
+            name = "@vue/typescript-plugin",
+            location = vue_language_server_path,
+            languages = { "vue" },
+            configNamespace = "typescript",
+        }
+
+        cfg.settings = {
+            vtsls = {
+                tsserver = {
+                    globalPlugins = { vue_plugin },
+                },
             },
-          },
-        },
-      })
-    else
-      lspconfig[server].setup({
-        on_attach = on_attach,
-      })
+        }
+
+        cfg.filetypes = {
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "vue",
+        }
+
+    elseif server == "vue_ls" then
+        local vue_language_server_path =
+            vim.fn.stdpath("data") .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+
+        cfg.init_options = {
+            typescript = {
+                tsdk = vue_language_server_path .. "/node_modules/typescript/lib",
+            },
+        }
+
+        cfg.filetypes = { "vue" }
     end
-  end
+
+    -- Apply config
+    vim.lsp.config(server, cfg)
+
+    -- Enable
+    vim.lsp.enable(server)
+end
