@@ -22,7 +22,7 @@ require('dashboard').setup {
           action = 'e newfile'
         },
         {
-          icon = '  ',
+          icon = '  ',
           icon_hl = 'Recent',
           desc = 'Recents',
           desc_hl = 'String',
@@ -57,7 +57,7 @@ require('dashboard').setup {
           action = 'Lazy sync'
         },
         {
-          icon = '  ',
+          icon = '󰈆  ',
           icon_hl = 'Exit',
           desc = 'Exit',
           desc_hl = 'String',
