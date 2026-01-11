@@ -55,7 +55,10 @@ mason_lspconfig.setup({automatic_installation = false})
 
 -- Setup per-server configs
 for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
-    local cfg = {}
+    local cfg = {
+        capabilities = caps,
+        on_attach = on_attach
+    }
 
     -- === Modern Vue + TypeScript Integration ===
     if server == "vtsls" then
